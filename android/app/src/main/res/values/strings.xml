@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ParkinBuddy</string>
+    <string name="facebook_app_id">1223106244997939</string>
+    <string name="fb_login_protocol_scheme">fb1223106244997939</string>
+    <string name="facebook_client_token">133d50ace4f10cda425b28e01d370c7f</string>
+    <string name="GOOGLE_MAPS_API_KEY" translatable="false">AIzaSyD2ays64SHCIGtk9tp_8RpKmwb0iINPUOA</string>
+</resources>

@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "751228707184",
+    "project_id": "parkingbuddy-4c8fa",
+    "storage_bucket": "parkingbuddy-4c8fa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:751228707184:android:6c456be1c886219465afb5",
+        "android_client_info": {
+          "package_name": "com.hashvizard.parkingbuddy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "751228707184-bk5s02rlqc76gab4vb1bph2k2jbqp6sj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hashvizard.parkingbuddy",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "751228707184-efp07a20rp6f3uusup5dut8jhb4heoj9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hashvizard.parkingbuddy",
+            "certificate_hash": "2cb3fa03a5c33551a3d91d173c8605cb2930082f"
+          }
+        },
+        {
+          "client_id": "751228707184-5lpnctsf3flvffhnajcas4t8q62jt4ul.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbsLIZextBnuIKiymJNW5FjB9_4NFplyk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "751228707184-5lpnctsf3flvffhnajcas4t8q62jt4ul.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "751228707184-3eklsrfbfagdmq8vsa9r22h2ln7uve1j.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.hashvizard.parkingbuddy"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
