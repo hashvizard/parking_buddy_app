@@ -38,6 +38,7 @@ import { NavBar } from "../../lib/Components";
 import BookingDataView from "../../lib/Booking/BookingDataView";
 import Passes from "../../lib/Booking/Passes";
 import MyPasses from "../../lib/Components/MyPasses";
+import AddNewVehicle from "../../lib/Vehicle/AddNewVehicle";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -96,7 +97,7 @@ export default function () {
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="Legal" component={Legal} />
         <Stack.Screen name="Chat" component={Chat} />
-        <Stack.Screen name="AddVehicle" component={AddVehicle} />
+        <Stack.Screen name="AddVehicle" component={AddNewVehicle} />
         <Stack.Screen name="BookingInfo" component={BookingInfo} />
       </Stack.Navigator>
     );
