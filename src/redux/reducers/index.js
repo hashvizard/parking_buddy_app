@@ -4,13 +4,15 @@ import {data} from './data';
 import {appState} from './appState';
 import {bookingState} from './bookingState';
 import {mapData} from './mapData';
+import {vehicleReducer} from './vehicleReducer';
 
 const Reducers = combineReducers({
   user, // For Storing User Information
   data,
   appState,
   bookingState,
-  mapData
+  mapData,
+  vehicleReducer
 });
 
 export default Reducers;

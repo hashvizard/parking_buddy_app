@@ -8,7 +8,7 @@ import thunk from 'redux-thunk';
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  blacklist: ['appState','bookingState','mapData'],
+  blacklist: ['appState','bookingState','mapData','vehicleReducer'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

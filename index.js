@@ -38,6 +38,7 @@ const theme = {
   },
 };
 
+
 const ReduxApp = () => (
   <GestureHandlerRootView style={{ ...StyleSheet.absoluteFill }}>
     <Provider store={store}>

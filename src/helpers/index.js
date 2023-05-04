@@ -559,3 +559,14 @@ export const dateFormatChanger = (timestamp) => {
 
   return formattedString; // output: "Thursday 26 May, 22"
 };
+
+
+
+export function replaceDataById(arr, id, newData) {
+  return arr.map(item => {
+    if (item.id === id) {
+      return { ...item, ...newData };
+    }
+    return item;
+  });
+}

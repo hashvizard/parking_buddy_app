@@ -11,6 +11,8 @@ import { StyleSheet, View, Image } from "react-native";
 import Lottie from "lottie-react-native";
 import Navigation from "./src/Navigation";
 import DialogBox from "./lib/Components/DialogBox";
+
+
 export default class App extends Component {
   constructor() {
     super();

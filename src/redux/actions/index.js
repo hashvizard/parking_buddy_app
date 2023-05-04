@@ -1,4 +1,4 @@
-import {LOGGED_IN, RESET_SIGNUP, SET_ALERT, SET_BOOKING_DATA, SET_BOTTOM_SHEET_INDEX, SET_ENABLED_HOME, SET_LOADING, SET_MAP_DATA, SET_USER_DATA, SHOW_BOTTOM_SHEET, USER_DATA} from '../constants';
+import {LOGGED_IN, RESET_SIGNUP, SET_ALERT, SET_BOOKING_DATA, SET_BOTTOM_SHEET_INDEX, SET_ENABLED_HOME, SET_LOADING, SET_MAP_DATA, SET_USER_DATA, SET_USER_VEHICLE_DATA, SHOW_BOTTOM_SHEET, USER_DATA} from '../constants';
 
 
 // Setting user Data
@@ -40,6 +40,17 @@ export const bookingData = (data) => dispatch => {
     data: data
   });
 }
+
+
+// Handling Loading globally
+export const vehicleData = (data) => dispatch => {
+  return dispatch({
+    type: SET_USER_VEHICLE_DATA,
+    data: data
+  });
+}
+
+
 
 // Handling Loading globally
 export const showBottomSheetContainer = (data) => dispatch => {
