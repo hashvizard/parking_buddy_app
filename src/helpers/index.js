@@ -485,17 +485,22 @@ export const getTimeFrame = (timestamp, hoursToAdd, rate = 0) => {
   var your_timestamp = new Date(timestamp);
 
   // Add 4 hours to the timestamp
-  your_timestamp.setHours(your_timestamp.getHours() + hoursToAdd);
+  // your_timestamp.setHours(your_timestamp.getHours() + hoursToAdd);
 
   // Format the start and end times as "h:mm a"
   var start_time = your_timestamp.toLocaleTimeString("en-US", {
+    day:"2-digit",
+    month:"long",
     hour: "numeric",
     minute: "numeric",
     hour12: true,
   });
+  
   var end_time = new Date(
     your_timestamp.getTime() + parseInt(hoursToAdd) * 60 * 60 * 1000
   ).toLocaleTimeString("en-US", {
+    day:"2-digit",
+    month:"long",
     hour: "numeric",
     minute: "numeric",
     hour12: true,
