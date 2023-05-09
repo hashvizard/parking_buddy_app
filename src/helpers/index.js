@@ -74,7 +74,7 @@ export const postDataApi = async (
       data,
       await requestHeaderCreator(contiansFile, requireToken)
     );
-    console.log(response, "ds");
+
     return response.data;
   } catch (err) {
     // Reason: Using any as the error could be of any type
@@ -489,18 +489,18 @@ export const getTimeFrame = (timestamp, hoursToAdd, rate = 0) => {
 
   // Format the start and end times as "h:mm a"
   var start_time = your_timestamp.toLocaleTimeString("en-US", {
-    day:"2-digit",
-    month:"long",
+    day: "2-digit",
+    month: "long",
     hour: "numeric",
     minute: "numeric",
     hour12: true,
   });
-  
+
   var end_time = new Date(
     your_timestamp.getTime() + parseInt(hoursToAdd) * 60 * 60 * 1000
   ).toLocaleTimeString("en-US", {
-    day:"2-digit",
-    month:"long",
+    day: "2-digit",
+    month: "long",
     hour: "numeric",
     minute: "numeric",
     hour12: true,
@@ -527,8 +527,7 @@ export function cuponCode(number, amount, unit) {
   if (unit === "percentage") {
     // Calculate the percentage of the amount and subtract it from the amount
 
-    return  (number / 100) * amount;
-
+    return (number / 100) * amount;
   } else if (unit == "number") {
     // Subtract the number from the amount
 
@@ -565,13 +564,36 @@ export const dateFormatChanger = (timestamp) => {
   return formattedString; // output: "Thursday 26 May, 22"
 };
 
-
-
 export function replaceDataById(arr, id, newData) {
-  return arr.map(item => {
+  return arr.map((item) => {
     if (item.id === id) {
       return { ...item, ...newData };
     }
     return item;
   });
+}
+
+export function timestampToMysqlDatetime(timestamp) {
+  const date = new Date(timestamp); // Convert seconds to milliseconds
+  const year = date.getFullYear();
+  const month = padZero(date.getMonth() + 1);
+  const day = padZero(date.getDate());
+  const hour = padZero(date.getHours());
+  const minute = padZero(date.getMinutes());
+  const second = padZero(date.getSeconds());
+
+  return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
+}
+
+export function timestampToMysqlDatetimeWithOffset(timestamp, offset) {
+  const date = new Date(timestamp); // Convert seconds to milliseconds
+  date.setHours(date.getHours() + offset); // Add offset hours
+  const year = date.getFullYear();
+  const month = padZero(date.getMonth() + 1);
+  const day = padZero(date.getDate());
+  const hour = padZero(date.getHours());
+  const minute = padZero(date.getMinutes());
+  const second = padZero(date.getSeconds());
+
+  return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
 }
