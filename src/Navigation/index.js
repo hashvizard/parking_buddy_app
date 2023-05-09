@@ -39,6 +39,7 @@ import BookingDataView from "../../lib/Booking/BookingDataView";
 import Passes from "../../lib/Booking/Passes";
 import MyPasses from "../../lib/Components/MyPasses";
 import AddNewVehicle from "../../lib/Vehicle/AddNewVehicle";
+import AllPasses from "../../lib/Components/AllPasses";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -84,6 +85,7 @@ export default function () {
         <Stack.Screen name="BookingDetails" component={BookingDetails} />
         <Stack.Screen name="Passes" component={Passes} />
         <Stack.Screen name="MyPasses" component={MyPasses} />
+        <Stack.Screen name="AllPasses" component={AllPasses} />
         <Stack.Screen name="ConfirmBooking" component={ConfirmBooking} />
         <Stack.Screen name="BookingDataView" component={BookingDataView} />
 
