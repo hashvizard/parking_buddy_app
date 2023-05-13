@@ -597,3 +597,56 @@ export function timestampToMysqlDatetimeWithOffset(timestamp, offset) {
 
   return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
 }
+
+export function formatTime(startTime, endTime,start=false) {
+  // Convert the start time and end time to Date objects
+  const startDate = new Date(startTime);
+  const endDate = new Date(endTime);
+
+  // Extract the day, month, and year from the start time
+  const day = startDate.toLocaleDateString(undefined, { day: 'numeric' });
+  const month = startDate.toLocaleDateString(undefined, { month: 'short' });
+  const year = startDate.toLocaleDateString(undefined, { year: 'numeric' });
+
+  // Extract the hours and minutes from the start time and end time
+  const startHours = startDate.getHours();
+  const startMinutes = startDate.getMinutes();
+  const endHours = endDate.getHours();
+  const endMinutes = endDate.getMinutes();
+
+  // Determine whether the start time is in the morning or afternoon
+  const startPeriod = startHours >= 12 ? 'Pm' : 'Am';
+
+  // Convert the start hours to 12-hour format
+  const startHours12 = startHours % 12 || 12;
+
+  // Determine whether the end time is in the morning or afternoon
+  const endPeriod = endHours >= 12 ? 'Pm' : 'Am';
+
+  // Convert the end hours to 12-hour format
+  const endHours12 = endHours % 12 || 12;
+
+  // Format the start and end times
+  const startTimeFormatted = `${day} ${month}, ${startHours12}:${startMinutes.toString().padStart(2, '0')} ${startPeriod}`;
+  const endTimeFormatted = `${day} ${month}, ${endHours12}:${endMinutes.toString().padStart(2, '0')} ${endPeriod}`;
+
+  // Return the formatted times
+  if(start){
+    return  startTimeFormatted;
+  }
+  return `${startTimeFormatted} - ${endTimeFormatted}`;
+}
+
+
+export function convertUnderscoresToTitleCase(str) {
+  // Replace underscores with spaces and split the string into an array of words
+  const words = str.replace(/_/g, ' ').split(' ');
+
+  // Capitalize the first letter of each word
+  const titleCaseWords = words.map(word => word.charAt(0).toUpperCase() + word.slice(1));
+
+  // Join the words back into a single string with spaces
+  const titleCaseStr = titleCaseWords.join(' ');
+
+  return titleCaseStr;
+}

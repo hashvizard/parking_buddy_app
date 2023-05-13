@@ -40,6 +40,7 @@ import Passes from "../../lib/Booking/Passes";
 import MyPasses from "../../lib/Components/MyPasses";
 import AddNewVehicle from "../../lib/Vehicle/AddNewVehicle";
 import AllPasses from "../../lib/Components/AllPasses";
+import PolicyView from "../../lib/Components/PolicyView";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -98,6 +99,7 @@ export default function () {
         <Stack.Screen name="Support" component={Support} />
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="Legal" component={Legal} />
+        <Stack.Screen name="PolicyView" component={PolicyView} />
         <Stack.Screen name="Chat" component={Chat} />
         <Stack.Screen name="AddVehicle" component={AddNewVehicle} />
         <Stack.Screen name="BookingInfo" component={BookingInfo} />
