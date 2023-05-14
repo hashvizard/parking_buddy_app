@@ -650,3 +650,56 @@ export function convertUnderscoresToTitleCase(str) {
 
   return titleCaseStr;
 }
+
+
+  export const alertBox = (title,description) =>
+    Alert.alert(title, description, [
+      {
+        text: 'Cancel',
+        onPress: () => console.log('Cancel Pressed'),
+        style: 'cancel',
+      },
+      {text: 'OK', onPress: () => console.log('OK Pressed')},
+    ]);
+
+
+    export const getTimeFrameOnly = (timestamp, hoursToAdd, rate = 0) => {
+      // Replace "your_timestamp" with your actual timestamp value
+    
+      var your_timestamp = new Date(timestamp);
+    
+      // Add 4 hours to the timestamp
+      // your_timestamp.setHours(your_timestamp.getHours() + hoursToAdd);
+    
+      // Format the start and end times as "h:mm a"
+      var start_time = your_timestamp.toLocaleTimeString("en-US", {
+        hour: "numeric",
+        minute: "numeric",
+        hour12: true,
+      });
+    
+      var end_time = new Date(
+        your_timestamp.getTime() + parseInt(hoursToAdd) * 60 * 60 * 1000
+      ).toLocaleTimeString("en-US", {
+        hour: "numeric",
+        minute: "numeric",
+        hour12: true,
+      });
+    
+   
+    
+      return `${start_time} - ${end_time}`;
+    
+    };
+
+
+    export function checkTime(dateString) {
+      const currentTime = new Date();
+      const inputTime = new Date(dateString);
+    
+      if (inputTime.getTime() < currentTime.getTime()) {
+        inputTime.setDate(inputTime.getDate() + 1);
+      }
+    
+      return inputTime.toISOString();
+    }
