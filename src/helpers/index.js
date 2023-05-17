@@ -7,6 +7,58 @@ import Geolocation from "react-native-geolocation-service";
 import { LoginManager, AccessToken, Profile } from "react-native-fbsdk-next";
 import moment from "moment";
 
+import messaging from "@react-native-firebase/messaging";
+
+export async function requestUserPermission() {
+  const authStatus = await messaging().requestPermission();
+  const enabled =
+    authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+    authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+
+  if (enabled) {
+    console.log("Authorization status:", authStatus);
+  }
+}
+
+export async function getFcmToken() {
+  let fcmToken = await AsyncStorage.getItem("fcmToken");
+
+  if (!fcmToken) {
+    try {
+      let token = await messaging().getToken();
+      console.log(token);
+      if (token) {
+        await AsyncStorage.setItem("fcmToken", token);
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  }
+}
+
+export const NotificationListerner = () => {
+  messaging().onNotificationOpenedApp((remoteMessage) => {
+    console.log(
+      "Notification caused app to open from background state:",
+      remoteMessage.notification
+    );
+  });
+
+  messaging()
+    .getInitialNotification()
+    .then((remoteMessage) => {
+      if (remoteMessage) {
+        console.log(
+          "Notification caused app to open from quit state:",
+          remoteMessage.notification
+        );
+      }
+    });
+  messaging().onMessage(async (remoteMessage) => {
+    console.log(remoteMessage, "Notification on foreground state...");
+  });
+};
+
 export const parseDisplayName = (displayName) => {
   const nameParts = displayName.split(" ");
   if (nameParts.length === 1) {
@@ -598,15 +650,15 @@ export function timestampToMysqlDatetimeWithOffset(timestamp, offset) {
   return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
 }
 
-export function formatTime(startTime, endTime,start=false) {
+export function formatTime(startTime, endTime, start = false) {
   // Convert the start time and end time to Date objects
   const startDate = new Date(startTime);
   const endDate = new Date(endTime);
 
   // Extract the day, month, and year from the start time
-  const day = startDate.toLocaleDateString(undefined, { day: 'numeric' });
-  const month = startDate.toLocaleDateString(undefined, { month: 'short' });
-  const year = startDate.toLocaleDateString(undefined, { year: 'numeric' });
+  const day = startDate.toLocaleDateString(undefined, { day: "numeric" });
+  const month = startDate.toLocaleDateString(undefined, { month: "short" });
+  const year = startDate.toLocaleDateString(undefined, { year: "numeric" });
 
   // Extract the hours and minutes from the start time and end time
   const startHours = startDate.getHours();
@@ -615,91 +667,132 @@ export function formatTime(startTime, endTime,start=false) {
   const endMinutes = endDate.getMinutes();
 
   // Determine whether the start time is in the morning or afternoon
-  const startPeriod = startHours >= 12 ? 'Pm' : 'Am';
+  const startPeriod = startHours >= 12 ? "Pm" : "Am";
 
   // Convert the start hours to 12-hour format
   const startHours12 = startHours % 12 || 12;
 
   // Determine whether the end time is in the morning or afternoon
-  const endPeriod = endHours >= 12 ? 'Pm' : 'Am';
+  const endPeriod = endHours >= 12 ? "Pm" : "Am";
 
   // Convert the end hours to 12-hour format
   const endHours12 = endHours % 12 || 12;
 
   // Format the start and end times
-  const startTimeFormatted = `${day} ${month}, ${startHours12}:${startMinutes.toString().padStart(2, '0')} ${startPeriod}`;
-  const endTimeFormatted = `${day} ${month}, ${endHours12}:${endMinutes.toString().padStart(2, '0')} ${endPeriod}`;
+  const startTimeFormatted = `${day} ${month}, ${startHours12}:${startMinutes
+    .toString()
+    .padStart(2, "0")} ${startPeriod}`;
+  const endTimeFormatted = `${day} ${month}, ${endHours12}:${endMinutes
+    .toString()
+    .padStart(2, "0")} ${endPeriod}`;
 
   // Return the formatted times
-  if(start){
-    return  startTimeFormatted;
+  if (start) {
+    return startTimeFormatted;
   }
   return `${startTimeFormatted} - ${endTimeFormatted}`;
 }
 
-
 export function convertUnderscoresToTitleCase(str) {
   // Replace underscores with spaces and split the string into an array of words
-  const words = str.replace(/_/g, ' ').split(' ');
+  const words = str.replace(/_/g, " ").split(" ");
 
   // Capitalize the first letter of each word
-  const titleCaseWords = words.map(word => word.charAt(0).toUpperCase() + word.slice(1));
+  const titleCaseWords = words.map(
+    (word) => word.charAt(0).toUpperCase() + word.slice(1)
+  );
 
   // Join the words back into a single string with spaces
-  const titleCaseStr = titleCaseWords.join(' ');
+  const titleCaseStr = titleCaseWords.join(" ");
 
   return titleCaseStr;
 }
 
+export const alertBox = (title, description) =>
+  Alert.alert(title, description, [
+    {
+      text: "Cancel",
+      onPress: () => console.log("Cancel Pressed"),
+      style: "cancel",
+    },
+    { text: "OK", onPress: () => console.log("OK Pressed") },
+  ]);
 
-  export const alertBox = (title,description) =>
-    Alert.alert(title, description, [
-      {
-        text: 'Cancel',
-        onPress: () => console.log('Cancel Pressed'),
-        style: 'cancel',
-      },
-      {text: 'OK', onPress: () => console.log('OK Pressed')},
-    ]);
+export const getTimeFrameOnly = (timestamp, hoursToAdd, rate = 0) => {
+  // Replace "your_timestamp" with your actual timestamp value
 
+  var your_timestamp = new Date(timestamp);
 
-    export const getTimeFrameOnly = (timestamp, hoursToAdd, rate = 0) => {
-      // Replace "your_timestamp" with your actual timestamp value
-    
-      var your_timestamp = new Date(timestamp);
-    
-      // Add 4 hours to the timestamp
-      // your_timestamp.setHours(your_timestamp.getHours() + hoursToAdd);
-    
-      // Format the start and end times as "h:mm a"
-      var start_time = your_timestamp.toLocaleTimeString("en-US", {
-        hour: "numeric",
-        minute: "numeric",
-        hour12: true,
-      });
-    
-      var end_time = new Date(
-        your_timestamp.getTime() + parseInt(hoursToAdd) * 60 * 60 * 1000
-      ).toLocaleTimeString("en-US", {
-        hour: "numeric",
-        minute: "numeric",
-        hour12: true,
-      });
-    
-   
-    
-      return `${start_time} - ${end_time}`;
-    
-    };
+  // Add 4 hours to the timestamp
+  // your_timestamp.setHours(your_timestamp.getHours() + hoursToAdd);
 
+  // Format the start and end times as "h:mm a"
+  var start_time = your_timestamp.toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  });
 
-    export function checkTime(dateString) {
-      const currentTime = new Date();
-      const inputTime = new Date(dateString);
-    
-      if (inputTime.getTime() < currentTime.getTime()) {
-        inputTime.setDate(inputTime.getDate() + 1);
-      }
-    
-      return inputTime.toISOString();
-    }
+  var end_time = new Date(
+    your_timestamp.getTime() + parseInt(hoursToAdd) * 60 * 60 * 1000
+  ).toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  });
+
+  return `${start_time} - ${end_time}`;
+};
+
+export function checkTime(dateString) {
+  const currentTime = new Date();
+  const inputTime = new Date(dateString);
+
+  if (inputTime.getTime() < currentTime.getTime()) {
+    inputTime.setDate(inputTime.getDate() + 1);
+  }
+
+  return inputTime.toISOString();
+}
+
+export function convertTimestampToFirestoreFormat(timestampString) {
+  const timestamp = new Date(timestampString);
+
+  const seconds = Math.floor(timestamp.getTime() / 1000);
+  const nanoseconds = (timestamp.getTime() % 1000) * 1000000;
+
+  return { seconds, nanoseconds };
+}
+
+export function convertFirestoreTimestampsToReadableStrings(array) {
+  return array.map((obj) => {
+    const seconds = obj.createdAt.seconds;
+    const nanoseconds = obj.createdAt.nanoseconds;
+
+    const date = new Date(seconds * 1000 + nanoseconds / 1000000);
+
+    const year = date.getUTCFullYear();
+    const month = (date.getUTCMonth() + 1).toString().padStart(2, "0");
+    const day = date.getUTCDate().toString().padStart(2, "0");
+    const hours = date.getUTCHours().toString().padStart(2, "0");
+    const minutes = date.getUTCMinutes().toString().padStart(2, "0");
+    const secondsWithMs =
+      date.getUTCSeconds().toString().padStart(2, "0") +
+      "." +
+      date.getUTCMilliseconds().toString().padStart(3, "0");
+    const timezoneOffset = date.getTimezoneOffset();
+
+    const timezoneHours = Math.floor(Math.abs(timezoneOffset) / 60)
+      .toString()
+      .padStart(2, "0");
+    const timezoneMinutes = (Math.abs(timezoneOffset) % 60)
+      .toString()
+      .padStart(2, "0");
+    const timezoneSign = timezoneOffset < 0 ? "+" : "-";
+
+    const timestampString = `${year}-${month}-${day}T${hours}:${minutes}:${secondsWithMs}Z`;
+
+    return { ...obj, createdAt: timestampString };
+  });
+}
+

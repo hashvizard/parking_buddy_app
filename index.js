@@ -24,6 +24,7 @@ import {
 } from "react-native-paper";
 import colors from "./src/constants/colors";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import messaging from "@react-native-firebase/messaging";
 
 GoogleSignin.configure({
   webClientId: process.env.GOOGLE_LOGIN_CLIENT_ID,
@@ -38,6 +39,10 @@ const theme = {
   },
 };
 
+// Register background handler
+messaging().setBackgroundMessageHandler(async remoteMessage => {
+  console.log('Message handled in the background!', remoteMessage);
+});
 
 const ReduxApp = () => (
   <GestureHandlerRootView style={{ ...StyleSheet.absoluteFill }}>

@@ -41,12 +41,21 @@ import MyPasses from "../../lib/Components/MyPasses";
 import AddNewVehicle from "../../lib/Vehicle/AddNewVehicle";
 import AllPasses from "../../lib/Components/AllPasses";
 import PolicyView from "../../lib/Components/PolicyView";
+import { useEffect } from "react";
+import {
+  NotificationListerner,
+  requestUserPermission,
+} from "../helpers";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 export default function () {
   const { loggedIn } = useSelector((state) => state.data);
+  useEffect(() => {
+    requestUserPermission();
+    NotificationListerner();
+  }, []);
 
   const HomeTab = () => {
     return (
@@ -109,7 +118,7 @@ export default function () {
 
   return (
     <NavigationContainer>
-      {loggedIn  ? HomeRoutes() : AuthRoutes()}
+      {loggedIn ? HomeRoutes() : AuthRoutes()}
     </NavigationContainer>
   );
 }
