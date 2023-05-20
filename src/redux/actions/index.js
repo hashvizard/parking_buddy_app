@@ -1,4 +1,4 @@
-import {LOGGED_IN, RESET_SIGNUP, SET_ALERT, SET_BOOKING_DATA, SET_BOTTOM_SHEET_INDEX, SET_ENABLED_HOME, SET_INTIAL_BOOKING_DATA, SET_LOADING, SET_MAP_DATA, SET_USER_DATA, SET_USER_VEHICLE_DATA, SHOW_BOTTOM_SHEET, USER_DATA} from '../constants';
+import {LOGGED_IN, RESET_SIGNUP, SET_ALERT, SET_BOOKING_DATA, SET_BOTTOM_SHEET_INDEX, SET_ENABLED_HOME, SET_INTIAL_BOOKING_DATA, SET_LOADING, SET_MAP_DATA, SET_NOTIFICATIONS, SET_NOTIFICATION_SEEN, SET_USER_DATA, SET_USER_VEHICLE_DATA, SHOW_BOTTOM_SHEET, USER_DATA} from '../constants';
 
 
 // Setting user Data
@@ -101,6 +101,25 @@ export const setUserBackendData = user => dispatch => {
     type: USER_DATA,
   });
 }
+
+
+// Setting user Notifications
+export const setUserNotifications = userData => dispatch => {
+  return dispatch({
+    data: userData,
+    type: SET_NOTIFICATIONS,
+  });
+}
+
+// Setting Notifications Seen
+export const setNotificationSeen = seen => dispatch => {
+  return dispatch({
+    data: seen,
+    type: SET_NOTIFICATION_SEEN,
+  });
+}
+
+
 
 // Setting user Backend Data
 export const setLoggedIn = val => dispatch => {

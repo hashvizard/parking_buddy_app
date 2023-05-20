@@ -6,8 +6,44 @@ import ImagePicker from "react-native-image-crop-picker";
 import Geolocation from "react-native-geolocation-service";
 import { LoginManager, AccessToken, Profile } from "react-native-fbsdk-next";
 import moment from "moment";
-
+import RazorpayCheckout from 'react-native-razorpay';
 import messaging from "@react-native-firebase/messaging";
+import colors from "../constants/colors";
+
+
+
+
+export const paymentGateway = async (amount,user,cb,errorCb) => {
+  const options = {
+    // Configure your payment options here (e.g., key, amount, currency, etc.)
+    key: process.env.RAZORPAY_KEY,
+    amount: parseInt(amount) * 100, // Amount in paise (e.g., 10000 = ₹100)
+    currency: 'INR',
+    name: 'Parking Buddy',
+    description: 'Book your parking slot',
+    image: 'https://www.shutterstock.com/image-vector/street-signage-road-sign-parking-600w-522601459.jpg',
+  
+    prefill: {
+      email: user?.email,
+      contact: user?.phone,
+      name: user?.name,
+    },
+    theme: { color: colors.appColor },
+  };
+
+  RazorpayCheckout.open(options)
+    .then((data) => {
+      cb(data?.razorpay_payment_id);
+    })
+    .catch((error) => {
+      errorCb(error)
+    });
+};
+
+
+
+
+
 
 export async function requestUserPermission() {
   const authStatus = await messaging().requestPermission();
@@ -796,3 +832,17 @@ export function convertFirestoreTimestampsToReadableStrings(array) {
   });
 }
 
+export function formatDateTime() {
+  var currentDate = new Date();
+
+  var options = {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true,
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  };
+
+  return currentDate.toLocaleString("en-US", options);
+}

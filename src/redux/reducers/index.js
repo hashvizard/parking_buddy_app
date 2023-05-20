@@ -5,14 +5,15 @@ import {appState} from './appState';
 import {bookingState} from './bookingState';
 import {mapData} from './mapData';
 import {vehicleReducer} from './vehicleReducer';
-
+import {notifications} from './notifications';
 const Reducers = combineReducers({
   user, // For Storing User Information
   data,
   appState,
   bookingState,
   mapData,
-  vehicleReducer
+  vehicleReducer,
+  notifications
 });
 
 export default Reducers;
