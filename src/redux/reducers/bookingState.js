@@ -16,9 +16,9 @@ const initialState = {
     cuponCode: {},
     total_amount: 0,
     pass: {},
-    booking_charge: 21,
-    gst: 9,
-    cgst: 9,
+    booking_charge: 0,
+    gst: 0,
+    cgst: 0,
   },
 };
 // 0 for report modal and 1 for block modal
