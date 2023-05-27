@@ -842,3 +842,25 @@ export function formatDateTime() {
 
   return currentDate.toLocaleString("en-US", options);
 }
+
+
+export function separateExpiredAndNonExpiredObjects(array) {
+  const expiredObjects = [];
+  const nonExpiredObjects = [];
+  const currentTime = new Date();
+
+  array.forEach(obj => {
+    const endTime = new Date(obj.end_time);
+
+    if (endTime < currentTime) {
+      expiredObjects.push(obj);
+    } else {
+      nonExpiredObjects.push(obj);
+    }
+  });
+
+  return {
+    expired: expiredObjects,
+    nonExpired: nonExpiredObjects
+  };
+}
