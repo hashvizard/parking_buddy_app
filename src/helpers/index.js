@@ -683,6 +683,7 @@ export function timestampToMysqlDatetimeWithOffset(timestamp, offset) {
 }
 
 export function formatTime(startTime, endTime, start = false) {
+  console.log(startTime,endTime)
   // Convert the start time and end time to Date objects
   const startDate = new Date(startTime);
   const endDate = new Date(endTime);
@@ -690,6 +691,10 @@ export function formatTime(startTime, endTime, start = false) {
   // Extract the day, month, and year from the start time
   const day = startDate.toLocaleDateString(undefined, { day: "numeric" });
   const month = startDate.toLocaleDateString(undefined, { month: "short" });
+
+  const day2 = endDate.toLocaleDateString(undefined, { day: "numeric" });
+  const month2 = endDate.toLocaleDateString(undefined, { month: "short" });
+
   const year = startDate.toLocaleDateString(undefined, { year: "numeric" });
 
   // Extract the hours and minutes from the start time and end time
@@ -714,7 +719,7 @@ export function formatTime(startTime, endTime, start = false) {
   const startTimeFormatted = `${day} ${month}, ${startHours12}:${startMinutes
     .toString()
     .padStart(2, "0")} ${startPeriod}`;
-  const endTimeFormatted = `${day} ${month}, ${endHours12}:${endMinutes
+  const endTimeFormatted = `${day2} ${month2}, ${endHours12}:${endMinutes
     .toString()
     .padStart(2, "0")} ${endPeriod}`;
 
@@ -863,4 +868,14 @@ export function separateExpiredAndNonExpiredObjects(array) {
     expired: expiredObjects,
     nonExpired: nonExpiredObjects
   };
+}
+
+
+export function filterArrayByEndTime(array) {
+  const today = new Date(); // Get current date
+  const filteredArray = array.filter(item => {
+    const endTime = new Date(item.end_time); // Convert end_time to a Date object
+    return endTime >= today; // Compare end_time with today's date
+  });
+  return filteredArray;
 }
