@@ -153,6 +153,7 @@ export const postDataApi = async (
   contiansFile = false
 ) => {
   try {
+    console.log(BASE_URL,"I ahhs")
     const response = await axios.post(
       BASE_URL + url,
       data,
@@ -161,10 +162,13 @@ export const postDataApi = async (
 
     return response.data;
   } catch (err) {
+    console.log(err)
     // Reason: Using any as the error could be of any type
     return err.response.data;
   }
 };
+
+
 
 /**
  * call GET API
@@ -260,6 +264,7 @@ export const chooseFile = (type) =>
     const options = {
       mediaType: type,
       quality: 1,
+
     };
     launchImageLibrary(options, (response) => {
       if (response.didCancel) {
@@ -368,6 +373,7 @@ export const imageCrop = (path) =>
         width: 300,
         height: 300,
         cropping: true,
+        includeBase64:true
       }).then((image) => {
         resolve(image);
       });
@@ -875,7 +881,28 @@ export function filterArrayByEndTime(array) {
   const today = new Date(); // Get current date
   const filteredArray = array.filter(item => {
     const endTime = new Date(item.end_time); // Convert end_time to a Date object
-    return endTime >= today; // Compare end_time with today's date
+    return endTime > today; // Compare end_time with today's date
   });
   return filteredArray;
 }
+
+
+export const handleNavigate = (latitude,longitude) => {
+  const url = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`;
+  Linking.openURL(url);
+};
+
+
+export  const isTimeGreaterThan24Hours = (timeString) => {
+  // Parse the given time string into a Date object
+  const givenTime = new Date(timeString);
+
+  // Get the current time
+  const currentTime = new Date();
+
+  // Calculate the time that is 24 hours in the past
+  const pastTime = new Date(currentTime.getTime() - (24 * 60 * 60 * 1000));
+
+  // Compare the given time with the past time
+  return givenTime > pastTime;
+};

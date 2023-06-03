@@ -82,6 +82,8 @@ export default function () {
         <Stack.Screen name="UploadPhoto" component={UploadPhoto} />
         <Stack.Screen name="PreviewPhoto" component={PreviewPhoto} />
         <Stack.Screen name="SetLocation" component={SetLocation} />
+        <Stack.Screen name="Legal" component={Legal} />
+        <Stack.Screen name="PolicyView" component={PolicyView} />
         <Stack.Screen name="Congratulation" component={Congratulation} />
       </Stack.Navigator>
     );
