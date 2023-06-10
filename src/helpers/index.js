@@ -689,7 +689,7 @@ export function timestampToMysqlDatetimeWithOffset(timestamp, offset) {
 }
 
 export function formatTime(startTime, endTime, start = false) {
-  console.log(startTime,endTime)
+
   // Convert the start time and end time to Date objects
   const startDate = new Date(startTime);
   const endDate = new Date(endTime);
@@ -906,3 +906,41 @@ export  const isTimeGreaterThan24Hours = (timeString) => {
   // Compare the given time with the past time
   return givenTime > pastTime;
 };
+
+export function calculateHourDifference(start, end) {
+  const startTime = new Date(start).getTime();
+  const endTime = new Date(end).getTime();
+
+  const durationInHours = Math.floor((endTime - startTime) / (1000 * 60 * 60));
+
+  return durationInHours;
+}
+
+
+export function  addHoursToDate(inputDate, hoursToAdd) {
+
+  console.log(inputDate,hoursToAdd,"hoursToAddhoursToAddhoursToAddhoursToAdd")
+  if (!inputDate) {
+    return null; // or handle the case when the input date is not provided
+  }
+
+  const timeZoneOffset = 330; // Offset for Mumbai, India in minutes (330 = UTC+5:30)
+  const [datePart, timePart] = inputDate.split(' ');
+  const [year, month, day] = datePart.split('-');
+  const [hour, minute, second] = timePart.split(':');
+
+  // Create a new Date object with the adjusted date and time components
+  const updatedDateObj = new Date(
+    parseInt(year), parseInt(month) - 1, parseInt(day),
+    parseInt(hour), parseInt(minute), parseInt(second)
+  );
+
+  // Add hours and time zone offset
+  const updatedTime = updatedDateObj.getTime() + (hoursToAdd * 3600000) + (timeZoneOffset * 60000);
+  updatedDateObj.setTime(updatedTime);
+
+  // Format the new date as a string
+  const newDateStr = updatedDateObj.toISOString().split(".")[0].replace("T", " ");
+
+  return newDateStr;
+}

@@ -1,7 +1,8 @@
-import { SET_LOADING,SET_ALERT ,SHOW_BOTTOM_SHEET,SET_ENABLED_HOME,SET_BOTTOM_SHEET_INDEX} from "../constants";
+import { SET_LOADING,SET_ALERT,SET_NOTIFY ,SHOW_BOTTOM_SHEET,SET_ENABLED_HOME,SET_BOTTOM_SHEET_INDEX} from "../constants";
 
 const initialState = {
   loading: false,
+  notify:false,
   alert:false,
   isEnabled:true,
   bottomSheetIndex:1,
@@ -20,6 +21,11 @@ export const appState = (state = initialState, action) => {
           ...state,
           alert: action.data
         };
+        case SET_NOTIFY:
+          return {
+            ...state,
+            notify: action.data
+          };
         case SET_ENABLED_HOME:
           return {
             ...state,
