@@ -46,6 +46,7 @@ import { NotificationListerner, requestUserPermission } from "../helpers";
 import ParkingPasses from "../../lib/Components/ParkingPasses";
 import BookingPasses from "../../lib/Booking/BookingPasses";
 import UserAvailablePasses from "../../lib/Booking/UserAvailablePasses";
+import ExtendPasses from "../../lib/Booking/ExtendPasses";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -96,6 +97,7 @@ export default function () {
         <Stack.Screen name="Reservation" component={Reservation} />
         <Stack.Screen name="BookingDetails" component={BookingDetails} />
         <Stack.Screen name="Passes" component={Passes} />
+        <Stack.Screen name="ExtendPasses" component={ExtendPasses} />
         <Stack.Screen name="BookingPasses" component={BookingPasses} />
         <Stack.Screen name="UserAvailablePasses" component={UserAvailablePasses} />
         <Stack.Screen name="MyPasses" component={MyPasses} />
