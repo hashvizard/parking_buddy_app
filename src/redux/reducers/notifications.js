@@ -1,4 +1,4 @@
-import { SET_NOTIFICATIONS,SET_NOTIFICATION_SEEN} from "../constants";
+import { SET_NOTIFICATIONS,SET_NOTIFICATION_SEEN,EMPTY_NOTIFICATION} from "../constants";
 
 const initialState = {
   notifications:[],
@@ -17,6 +17,12 @@ export const notifications = (state = initialState, action) => {
           ...state,
           seen: action.data,
         };
+        case EMPTY_NOTIFICATION:
+          return {
+            ...state,
+            notifications:[],
+            seen:0,
+          };
     default:
       return state;
   }
