@@ -107,8 +107,9 @@ export const parseDisplayName = (displayName) => {
 
 // -------------------- API structure handler -------------- //
 
-// const BASE_URL = "http://10.0.2.2:8000/api/";
-const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+const BASE_URL = "http://10.0.2.2:8000/api/";
+// const BASE_URL = "https://kwad.in/pbhash/public/api/";
+// const BASE_URL = process.env.REACT_APP_BACKEND_URL;
 
 /**
  * Making Header for requests
