@@ -634,7 +634,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hashvizard.parkingbuddy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.logix.parkinbuddy;
 				PRODUCT_NAME = ParkingBuddy;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -660,7 +660,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hashvizard.parkingbuddy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.logix.parkinbuddy;
 				PRODUCT_NAME = ParkingBuddy;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";

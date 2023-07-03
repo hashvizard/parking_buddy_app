@@ -1,4 +1,4 @@
-package com.hashvizard.parkingbuddy.newarchitecture.components;
+package com.logix.parkinbuddy.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;

@@ -1,4 +1,4 @@
-package com.hashvizard.parkingbuddy;
+package com.logix.parkinbuddy;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

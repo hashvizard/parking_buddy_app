@@ -7,26 +7,26 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:751228707184:android:6c456be1c886219465afb5",
+        "mobilesdk_app_id": "1:751228707184:android:ad120faa6566647f65afb5",
         "android_client_info": {
-          "package_name": "com.hashvizard.parkingbuddy"
+          "package_name": "com.logix.parkinbuddy"
         }
       },
       "oauth_client": [
         {
-          "client_id": "751228707184-bk5s02rlqc76gab4vb1bph2k2jbqp6sj.apps.googleusercontent.com",
+          "client_id": "751228707184-8ppkhsqoq2olhlfmui5bn6sv5qonmml6.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.hashvizard.parkingbuddy",
-            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+            "package_name": "com.logix.parkinbuddy",
+            "certificate_hash": "2cb3fa03a5c33551a3d91d173c8605cb2930082f"
           }
         },
         {
-          "client_id": "751228707184-efp07a20rp6f3uusup5dut8jhb4heoj9.apps.googleusercontent.com",
+          "client_id": "751228707184-a6c2ktl7aaubg8l5cv426v2fvmace3ib.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.hashvizard.parkingbuddy",
-            "certificate_hash": "2cb3fa03a5c33551a3d91d173c8605cb2930082f"
+            "package_name": "com.logix.parkinbuddy",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
           }
         },
         {

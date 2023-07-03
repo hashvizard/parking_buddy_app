@@ -1,4 +1,4 @@
-package com.hashvizard.parkingbuddy;
+package com.logix.parkinbuddy;
 
 import android.app.Application;
 import android.content.Context;
@@ -9,7 +9,7 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.config.ReactFeatureFlags;
 import com.facebook.soloader.SoLoader;
-import com.hashvizard.parkingbuddy.newarchitecture.MainApplicationReactNativeHost;
+import com.logix.parkinbuddy.newarchitecture.MainApplicationReactNativeHost;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import com.airbnb.android.react.lottie.LottiePackage;
@@ -76,7 +76,7 @@ public class MainApplication extends MultiDexApplication implements ReactApplica
          We use reflection here to pick up the class that initializes Flipper,
         since Flipper library is not available in release mode
         */
-        Class<?> aClass = Class.forName("com.hashvizard.parkingbuddy.ReactNativeFlipper");
+        Class<?> aClass = Class.forName("com.logix.parkinbuddy.ReactNativeFlipper");
         aClass
             .getMethod("initializeFlipper", Context.class, ReactInstanceManager.class)
             .invoke(null, context, reactInstanceManager);

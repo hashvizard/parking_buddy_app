@@ -1,4 +1,4 @@
-package com.hashvizard.parkingbuddy.newarchitecture;
+package com.logix.parkinbuddy.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.hashvizard.parkingbuddy.BuildConfig;
-import com.hashvizard.parkingbuddy.newarchitecture.components.MainComponentsRegistry;
-import com.hashvizard.parkingbuddy.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.logix.parkinbuddy.BuildConfig;
+import com.logix.parkinbuddy.newarchitecture.components.MainComponentsRegistry;
+import com.logix.parkinbuddy.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 

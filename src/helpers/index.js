@@ -107,8 +107,8 @@ export const parseDisplayName = (displayName) => {
 
 // -------------------- API structure handler -------------- //
 
-const BASE_URL = "http://10.0.2.2:8000/api/";
-// const BASE_URL = "https://kwad.in/pbhash/public/api/";
+// const BASE_URL = "http://10.0.2.2:8000/api/";
+const BASE_URL = "https://kwad.in/pbhash/public/api/";
 // const BASE_URL = process.env.REACT_APP_BACKEND_URL;
 
 /**
@@ -155,7 +155,6 @@ export const postDataApi = async (
   contiansFile = false
 ) => {
   try {
-    console.log(BASE_URL,"I ahhs")
     const response = await axios.post(
       BASE_URL + url,
       data,
