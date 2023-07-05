@@ -16,10 +16,10 @@ export const paymentGateway = async (amount, user, cb, errorCb) => {
     key: process.env.RAZORPAY_KEY,
     amount: parseInt(amount) * 100, // Amount in paise (e.g., 10000 = ₹100)
     currency: "INR",
-    name: "Parking Buddy",
+    name: "ParkinBuddy",
     description: "Book your parking slot",
     image:
-      "https://www.shutterstock.com/image-vector/street-signage-road-sign-parking-600w-522601459.jpg",
+      "https://pb-admin-test-m6tckn2ny-rakesh-jena.vercel.app/6371e83de51cbfb08ac014b1c2acdbf5.svg",
 
     prefill: {
       email: user?.email,
