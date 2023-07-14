@@ -107,8 +107,8 @@ export const parseDisplayName = (displayName) => {
 
 // -------------------- API structure handler -------------- //
 
-// const BASE_URL = "http://10.0.2.2:8000/api/";
-const BASE_URL = "https://kwad.in/pbhash/public/api/";
+const BASE_URL = "http://10.0.2.2:8000/api/";
+// const BASE_URL = "https://kwad.in/pbhash/public/api/";
 // const BASE_URL = process.env.REACT_APP_BACKEND_URL;
 
 /**
@@ -504,9 +504,7 @@ export const facebookLogin = () =>
                 } else {
                   onError("Facebook Signin failed.");
                 }
-              } else {
-                console.log("I reach here");
-              }
+              } 
             });
           }
         },
@@ -931,8 +929,6 @@ export function calculateHourDifference(start, end) {
 
 
 export function  addHoursToDate(inputDate, hoursToAdd) {
-
-  console.log(inputDate,hoursToAdd,"hoursToAddhoursToAddhoursToAddhoursToAdd")
   if (!inputDate) {
     return null; // or handle the case when the input date is not provided
   }

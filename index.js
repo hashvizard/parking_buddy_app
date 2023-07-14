@@ -29,7 +29,6 @@ import messaging from "@react-native-firebase/messaging";
 GoogleSignin.configure({
   webClientId: process.env.GOOGLE_LOGIN_CLIENT_ID,
 });
-console.log(DefaultTheme);
 
 const theme = {
   ...DefaultTheme,
@@ -40,8 +39,8 @@ const theme = {
 };
 
 // Register background handler
-messaging().setBackgroundMessageHandler(async remoteMessage => {  
-  console.log('Message handled in the background!', remoteMessage);
+messaging().setBackgroundMessageHandler(async (remoteMessage) => {
+  console.log("Message handled in the background!", remoteMessage);
 });
 
 const ReduxApp = () => (
