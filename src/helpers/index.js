@@ -18,9 +18,7 @@ export const paymentGateway = async (amount, user, cb, errorCb) => {
     currency: "INR",
     name: "ParkinBuddy",
     description: "Book your parking slot",
-    image:
-      "https://pb-admin-test-m6tckn2ny-rakesh-jena.vercel.app/6371e83de51cbfb08ac014b1c2acdbf5.svg",
-
+    image: "https://kwad.in/pbhash/public/pbapplogo.png",
     prefill: {
       email: user?.email,
       contact: user?.phone,
@@ -163,13 +161,11 @@ export const postDataApi = async (
 
     return response.data;
   } catch (err) {
-    console.log(err)
+    console.log(err);
     // Reason: Using any as the error could be of any type
     return err.response.data;
   }
 };
-
-
 
 /**
  * call GET API
@@ -265,7 +261,6 @@ export const chooseFile = (type) =>
     const options = {
       mediaType: type,
       quality: 1,
-
     };
     launchImageLibrary(options, (response) => {
       if (response.didCancel) {
@@ -374,7 +369,7 @@ export const imageCrop = (path) =>
         width: 300,
         height: 300,
         cropping: true,
-        includeBase64:true
+        includeBase64: true,
       }).then((image) => {
         resolve(image);
       });
@@ -504,7 +499,7 @@ export const facebookLogin = () =>
                 } else {
                   onError("Facebook Signin failed.");
                 }
-              } 
+              }
             });
           }
         },
@@ -688,7 +683,6 @@ export function timestampToMysqlDatetimeWithOffset(timestamp, offset) {
 }
 
 export function formatTime(startTime, endTime, start = false) {
-
   // Convert the start time and end time to Date objects
   const startDate = new Date(startTime);
   const endDate = new Date(endTime);
@@ -852,26 +846,24 @@ export function decodeAndFetchFirstValue(jsonString) {
   return null;
 }
 
-
 export function formatDateTime() {
   const date = new Date();
   const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const day = String(date.getDate()).padStart(2, '0');
-  const hours = String(date.getHours()).padStart(2, '0');
-  const minutes = String(date.getMinutes()).padStart(2, '0');
-  const seconds = String(date.getSeconds()).padStart(2, '0');
-  
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  const hours = String(date.getHours()).padStart(2, "0");
+  const minutes = String(date.getMinutes()).padStart(2, "0");
+  const seconds = String(date.getSeconds()).padStart(2, "0");
+
   return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 }
-
 
 export function separateExpiredAndNonExpiredObjects(array) {
   const expiredObjects = [];
   const nonExpiredObjects = [];
   const currentTime = new Date();
 
-  array.forEach(obj => {
+  array.forEach((obj) => {
     const endTime = new Date(obj.end_time);
 
     if (endTime < currentTime) {
@@ -883,28 +875,25 @@ export function separateExpiredAndNonExpiredObjects(array) {
 
   return {
     expired: expiredObjects,
-    nonExpired: nonExpiredObjects
+    nonExpired: nonExpiredObjects,
   };
 }
 
-
 export function filterArrayByEndTime(array) {
   const today = new Date(); // Get current date
-  const filteredArray = array.filter(item => {
+  const filteredArray = array.filter((item) => {
     const endTime = new Date(item.end_time); // Convert end_time to a Date object
     return endTime > today; // Compare end_time with today's date
   });
   return filteredArray;
 }
 
-
-export const handleNavigate = (latitude,longitude) => {
+export const handleNavigate = (latitude, longitude) => {
   const url = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`;
   Linking.openURL(url);
 };
 
-
-export  const isTimeGreaterThan24Hours = (timeString) => {
+export const isTimeGreaterThan24Hours = (timeString) => {
   // Parse the given time string into a Date object
   const givenTime = new Date(timeString);
 
@@ -912,7 +901,7 @@ export  const isTimeGreaterThan24Hours = (timeString) => {
   const currentTime = new Date();
 
   // Calculate the time that is 24 hours in the past
-  const pastTime = new Date(currentTime.getTime() - (24 * 60 * 60 * 1000));
+  const pastTime = new Date(currentTime.getTime() - 24 * 60 * 60 * 1000);
 
   // Compare the given time with the past time
   return givenTime > pastTime;
@@ -927,29 +916,36 @@ export function calculateHourDifference(start, end) {
   return durationInHours;
 }
 
-
-export function  addHoursToDate(inputDate, hoursToAdd) {
+export function addHoursToDate(inputDate, hoursToAdd) {
   if (!inputDate) {
     return null; // or handle the case when the input date is not provided
   }
 
   const timeZoneOffset = 330; // Offset for Mumbai, India in minutes (330 = UTC+5:30)
-  const [datePart, timePart] = inputDate.split(' ');
-  const [year, month, day] = datePart.split('-');
-  const [hour, minute, second] = timePart.split(':');
+  const [datePart, timePart] = inputDate.split(" ");
+  const [year, month, day] = datePart.split("-");
+  const [hour, minute, second] = timePart.split(":");
 
   // Create a new Date object with the adjusted date and time components
   const updatedDateObj = new Date(
-    parseInt(year), parseInt(month) - 1, parseInt(day),
-    parseInt(hour), parseInt(minute), parseInt(second)
+    parseInt(year),
+    parseInt(month) - 1,
+    parseInt(day),
+    parseInt(hour),
+    parseInt(minute),
+    parseInt(second)
   );
 
   // Add hours and time zone offset
-  const updatedTime = updatedDateObj.getTime() + (hoursToAdd * 3600000) + (timeZoneOffset * 60000);
+  const updatedTime =
+    updatedDateObj.getTime() + hoursToAdd * 3600000 + timeZoneOffset * 60000;
   updatedDateObj.setTime(updatedTime);
 
   // Format the new date as a string
-  const newDateStr = updatedDateObj.toISOString().split(".")[0].replace("T", " ");
+  const newDateStr = updatedDateObj
+    .toISOString()
+    .split(".")[0]
+    .replace("T", " ");
 
   return newDateStr;
 }
