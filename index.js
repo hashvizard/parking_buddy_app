@@ -25,6 +25,7 @@ import {
 import colors from "./src/constants/colors";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import messaging from "@react-native-firebase/messaging";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 GoogleSignin.configure({
   webClientId: process.env.GOOGLE_LOGIN_CLIENT_ID,
@@ -39,22 +40,24 @@ const theme = {
 };
 
 // Register background handler
-messaging().setBackgroundMessageHandler(async (remoteMessage) => {
-  console.log("Message handled in the background!", remoteMessage);
-});
+// messaging().setBackgroundMessageHandler(async (remoteMessage) => {
+//   console.log("Message handled in the background!", remoteMessage);
+// });
 
 const ReduxApp = () => (
   <GestureHandlerRootView style={{ ...StyleSheet.absoluteFill }}>
     <Provider store={store}>
-      <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" && "padding"}
-        enabled
-        style={StyleSheet.absoluteFill}
-      >
-        <PaperProvider theme={theme}>
-          <App />
-        </PaperProvider>
-      </KeyboardAvoidingView>
+      <SafeAreaView style={{ flex: 1, marginTop: Platform.OS === "ios" ? 40 : 0 }}>
+        <KeyboardAvoidingView
+          behavior={Platform.OS === "ios" && "padding"}
+          enabled
+          style={StyleSheet.absoluteFill}
+        >
+          <PaperProvider theme={theme}>
+            <App />
+          </PaperProvider>
+        </KeyboardAvoidingView>
+      </SafeAreaView>
     </Provider>
   </GestureHandlerRootView>
 );
