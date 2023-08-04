@@ -13,7 +13,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		5A99D2E7BBDC4EB5BFAF4B96 /* Poppins.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F56497E00F6F40E9BFE9CB9D /* Poppins.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		BE6E16BD29E6723300139EF0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE6E16BC29E6723300139EF0 /* GoogleService-Info.plist */; };
+		BA233D7E2A7C0A950060699A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA233D7D2A7C0A940060699A /* GoogleService-Info.plist */; };
 		BE9782C729ED47B200CDF6D8 /* AIRDummyView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE97829129ED47B200CDF6D8 /* AIRDummyView.m */; };
 		BE9782C829ED47B200CDF6D8 /* AIRGoogleMapUrlTile.m in Sources */ = {isa = PBXBuildFile; fileRef = BE97829529ED47B200CDF6D8 /* AIRGoogleMapUrlTile.m */; };
 		BE9782C929ED47B200CDF6D8 /* AIRGoogleMapPolygonManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BE97829829ED47B200CDF6D8 /* AIRGoogleMapPolygonManager.m */; };
@@ -68,7 +68,7 @@
 		3B4392A12AC88292D35C810B /* Pods-ParkingBuddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkingBuddy.debug.xcconfig"; path = "Target Support Files/Pods-ParkingBuddy/Pods-ParkingBuddy.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-ParkingBuddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkingBuddy.release.xcconfig"; path = "Target Support Files/Pods-ParkingBuddy/Pods-ParkingBuddy.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ParkingBuddy/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		BE6E16BC29E6723300139EF0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BA233D7D2A7C0A940060699A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BE97829129ED47B200CDF6D8 /* AIRDummyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIRDummyView.m; sourceTree = "<group>"; };
 		BE97829229ED47B200CDF6D8 /* AIRGoogleMapWMSTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIRGoogleMapWMSTile.h; sourceTree = "<group>"; };
 		BE97829329ED47B200CDF6D8 /* AIRGoogleMapPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIRGoogleMapPolyline.h; sourceTree = "<group>"; };
@@ -168,6 +168,7 @@
 		13B07FAE1A68108700A75B9A /* ParkingBuddy */ = {
 			isa = PBXGroup;
 			children = (
+				BA233D7D2A7C0A940060699A /* GoogleService-Info.plist */,
 				BED9DDD929EE42BE009C46AC /* Fonts */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
@@ -207,7 +208,6 @@
 			isa = PBXGroup;
 			children = (
 				BE97829029ED47B200CDF6D8 /* AirGoogleMaps */,
-				BE6E16BC29E6723300139EF0 /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* ParkingBuddy */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* ParkingBuddyTests */,
@@ -395,9 +395,9 @@
 			files = (
 				BED9DDDA29EE42BE009C46AC /* Fonts in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
-				BE6E16BD29E6723300139EF0 /* GoogleService-Info.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				5A99D2E7BBDC4EB5BFAF4B96 /* Poppins.ttf in Resources */,
+				BA233D7E2A7C0A950060699A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
